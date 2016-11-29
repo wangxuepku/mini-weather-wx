@@ -20,8 +20,12 @@ import cn.edu.pku.wangxue.db.CityDB;
 public class MyApplication extends Application {
     private  static final String TAG = "MyAPP";
     private static MyApplication mApplication;
+    private static final String LOG_TAG = "myWeather";
     private CityDB mCityDB;
     private List<City> mCityList;
+    public static String getLogTag() {
+        return LOG_TAG;
+    }
 
     public void onCreate(){
         super.onCreate();
@@ -50,7 +54,7 @@ public class MyApplication extends Application {
             i++;
             String cityName = city.getCity();
             String cityCode = city.getNumber();
-            Log.d(TAG,cityCode+":"+cityName);
+           // Log.d(TAG,cityCode+":"+cityName);
         }
         Log.d(TAG,"i="+i);
         return true;
@@ -98,6 +102,7 @@ public class MyApplication extends Application {
         }
         return new CityDB(this, path);
     }
+
 
 
 }
