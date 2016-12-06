@@ -17,6 +17,12 @@ public class TodayWeather {
     private String high ;
     private String low ;
     private String type ;
+    public OtherWeather other1 = new OtherWeather();
+    public OtherWeather other2 = new OtherWeather();
+    public OtherWeather other3 = new OtherWeather();
+    public OtherWeather other4 = new OtherWeather();
+    public OtherWeather other5 = new OtherWeather();
+    public OtherWeather other6 = new OtherWeather();
 
     public String getCity() {
         return city;
