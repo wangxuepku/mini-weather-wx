@@ -2,12 +2,21 @@ package cn.edu.pku.wangxue.miniweather;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,6 +30,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -67,6 +77,7 @@ import static cn.edu.pku.wangxue.miniweather.R.drawable.biz_plugin_weather_zhong
  */
 public class MainActivity extends Activity implements View.OnClickListener{
     private static final int UPDATE_TODAY_WEATHER = 1 ;
+
     private ImageView mUpdateBtn;
     private ImageView mCitySelect;
     private TextView cityTv,timeTv,humidityTv,weekTv,pmDataTv,pmQualityTv,temperatureTV,climateTv,windTv,city_name_Tv,wenduTV;
@@ -100,6 +111,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_info);
+
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE){
             Log.d("myWeather","网络OK");
             Toast.makeText(MainActivity.this, "网络OK!", Toast.LENGTH_SHORT).show();
@@ -171,6 +183,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             startActivityForResult(i,1);
         }
 
+
         if (view.getId() == R.id.title_update_btn){
 
             SharedPreferences sharePreferences = getSharedPreferences("config",MODE_PRIVATE);
@@ -192,6 +205,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         }
     }
+    //
 
     public void rotate(){
         Animation operatingAnim = AnimationUtils.loadAnimation(this, R.anim.rotate);
