@@ -76,6 +76,9 @@ import static cn.edu.pku.wangxue.miniweather.R.drawable.biz_plugin_weather_zhong
  * Created by wx on 2016-09-20-0020.
  */
 public class MainActivity extends Activity implements View.OnClickListener{
+    //定位
+
+    
     private static final int UPDATE_TODAY_WEATHER = 1 ;
 
     private ImageView mUpdateBtn;
